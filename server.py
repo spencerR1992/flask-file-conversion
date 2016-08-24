@@ -26,7 +26,7 @@ def convert():
 			k = Key(bucket)
 			k.key = 'tickets/' + str(randint(0,999999999999999)) + ".png"
 			k.set_contents_from_string(cairosvg.svg2png(bytestring=request.json['svg']))
-			return str(k.key)
+			return jsonify({'url': k.key})
 		except Exception as e:
 			return "ERROR" + str(e) 
 
